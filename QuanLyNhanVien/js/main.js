@@ -16,23 +16,39 @@ function getValueNV(){
    
    
    console.log(inputValue)
-   if(elementId == 'email'){
-    isVaLid &= 
-      checkEmtyValue(inputValue, errorId) &&
-      checkEmailValue(inputValue, errorId)
-   } else if(elementId == 'password'){
-    isVaLid &= 
-      checkEmtyValue(inputValue, errorId) &&
-      checkPassWordValue(inputValue, errorId)
-   }
-   else{
-    isVaLid &= checkEmtyValue(inputValue, errorId)
-   }
+  //  if(elementId == 'email'){
+  //   isVaLid &= 
+  //     checkEmtyValue(inputValue, errorId) &&
+  //     checkEmailValue(inputValue, errorId)
+  //  } else if(elementId == 'password'){
+  //   isVaLid &= 
+  //     checkEmtyValue(inputValue, errorId) &&
+  //     checkPassWordValue(inputValue, errorId)
+  //  }
+  //  else{
+  //   isVaLid &= checkEmtyValue(inputValue, errorId)
+  //  }
 
-   var id = arrValue[i].id
-   staffs[id] = inputValue
+  if (elementId == 'email') {
+    isVaLid &= checkEmtyValue(inputValue, errorId) && checkEmailValue(inputValue, errorId);
+} else if (elementId == 'password') {
+    isVaLid &= checkEmtyValue(inputValue, errorId) && checkPassWordValue(inputValue, errorId);
+} else {
+    isVaLid &= checkEmtyValue(inputValue, errorId);
+}
+  
+
+   if (isVaLid) {
+    if (elementId == 'email') {
+        staffs[elementId] = inputValue;
+    } else if (elementId == 'password') {
+        staffs[elementId] = inputValue;
+    } else {
+        staffs[elementId] = inputValue;
+    }
+}
    
-  }
+}
   console.log(staffs)
 
   if(isVaLid){
@@ -49,13 +65,17 @@ document.getElementById('btnThemNV').onclick = function(){
 
   var staff =  getValueNV()
 
-  arrStaff.push(staff)
-  console.log(arrStaff)
+  if (staff) {
+    arrStaff.push(staff);
+    console.log(arrStaff);
 
-  document.getElementById('QLNV').reset()
+    document.getElementById('QLNV').reset();
 
-  luuDuLieuLocal('nhanvien', arrStaff)
-  hienThiDuLieu()
+    luuDuLieuLocal('nhanvien', arrStaff);
+    hienThiDuLieu(arrStaff);  // Truyền arrStaff vào hàm hiển thị
+  } else {
+    console.log("Dữ liệu không hợp lệ.");
+  }
 }
 
 function hienThiDuLieu(arr){

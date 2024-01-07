@@ -1,51 +1,88 @@
-function checkEmtyValue(value, errorId){
+// function checkEmtyValue(value, errorId){
     
-        if(value){
-            document.getElementById(errorId).innerHTML = ' '
-            return true
+//         if(value){
+//             document.getElementById(errorId).innerHTML = ' '
+//             return true
     
-        }else{
-            // trường hợp khi value rỗng
-            document.getElementById(errorId).innerHTML = 'Vui lòng không bỏ trống';
-            return false;
-        }
+//         }else{
+//             // trường hợp khi value rỗng
+//             document.getElementById(errorId).innerHTML = 'Vui lòng không bỏ trống';
+//             return false;
+//         }
     
     
-}
+// }
 
-function checkEmailValue(value, errorId){
-    var regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    // chuỗi regex sử dụng phương thức test và truyền dữ liệu muốn kiểm tra vào
-  var checkEmail =  regexEmail.test(value)
-    // KHi test sẽ trả về 2 kết quả true hoặc false
-    if(checkEmail){
-        // Xử lí khi email đúng định dạng
-        document.getElementById(errorId).innerHTML = ' '
-        return true
-    }else{
-        // trường hợp khi email không đúng định dạng 
-        document.getElementById(errorId).innerHTML = 'Vui nhập đứng định dạng email';
+// function checkEmailValue(value, errorId){
+//     var regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+//     // chuỗi regex sử dụng phương thức test và truyền dữ liệu muốn kiểm tra vào
+//   var checkEmail =  regexEmail.test(value)
+//     // KHi test sẽ trả về 2 kết quả true hoặc false
+//     if(checkEmail){
+//         // Xử lí khi email đúng định dạng
+//         document.getElementById(errorId).innerHTML = ' '
+//         return true
+//     }else{
+//         // trường hợp khi email không đúng định dạng 
+//         document.getElementById(errorId).innerHTML = 'Vui nhập đứng định dạng email';
+//         return false;
+//     }
+
+
+
+// }
+
+// function checkPassWordValue(value, errorId){
+//     var regexPassword = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+//     // chuỗi regex sử dụng phương thức test và truyền dữ liệu muốn kiểm tra vào
+//   var checkPassword =  regexPassword.test(value)
+//     // KHi test sẽ trả về 2 kết quả true hoặc false
+//     if(checkPassword){
+//         // Xử lí khi Password đúng định dạng
+//         document.getElementById(errorId).innerHTML = ' '
+//         return true
+//     }else{
+//         // trường hợp khi Password không đúng định dạng 
+//         document.getElementById(errorId).innerHTML = 'Vui nhập đứng định dạng password';
+//         return false;
+//     }
+
+
+// }
+
+
+function checkEmtyValue(value, errorId) {
+    if (value) {
+        document.getElementById(errorId).innerHTML = '';
+        return true;
+    } else {
+        document.getElementById(errorId).innerHTML = 'Vui lòng không bỏ trống';
         return false;
     }
-
-
-
 }
 
-function checkPassWordValue(value, errorId){
-    var regexPassword = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
-    // chuỗi regex sử dụng phương thức test và truyền dữ liệu muốn kiểm tra vào
-  var checkPassword =  regexPassword.test(value)
-    // KHi test sẽ trả về 2 kết quả true hoặc false
-    if(checkPassword){
-        // Xử lí khi Password đúng định dạng
-        document.getElementById(errorId).innerHTML = ' '
-        return true
-    }else{
-        // trường hợp khi Password không đúng định dạng 
-        document.getElementById(errorId).innerHTML = 'Vui nhập đứng định dạng password';
+function checkEmailValue(value, errorId) {
+    var regexEmail = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    var isValid = regexEmail.test(value);
+
+    if (isValid) {
+        document.getElementById(errorId).innerHTML = '';
+        return true;
+    } else {
+        document.getElementById(errorId).innerHTML = 'Vui lòng nhập đúng định dạng email';
         return false;
     }
+}
 
+function checkPassWordValue(value, errorId) {
+    var regexPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    var isValid = regexPassword.test(value);
 
+    if (isValid) {
+        document.getElementById(errorId).innerHTML = '';
+        return true;
+    } else {
+        document.getElementById(errorId).innerHTML = 'Vui lòng nhập đúng định dạng password';
+        return false;
+    }
 }
